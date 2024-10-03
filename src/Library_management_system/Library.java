@@ -79,5 +79,9 @@ public class Library {
                 break;
         }
     }
+    public void sortYearWeird(int year){
+        BookCompareWithYear BY = new BookCompareWithYear(year);
+        bookList.sort(BY);
+    }
 
 }

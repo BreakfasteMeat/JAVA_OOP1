@@ -6,10 +6,17 @@ import PVZ_Codechum_version.plant_interfaces.*;
 public class Mushroom extends Plant{
     boolean status;
 
+
+
     public Mushroom(String name, int sun_cost, int hit_points, boolean status) {
         super(name, sun_cost, hit_points);
         this.status = status;
     }
+
+    public boolean getStatus(){
+        return status;
+    }
+
     public void awaken(CoffeeBean cb){
         cb.die();
         this.status = true;
@@ -17,7 +24,7 @@ public class Mushroom extends Plant{
 
     public static class SunShroom extends Mushroom implements SunProducer{
         public SunShroom(boolean status){
-            super("Puff-shroom",25,6,status);
+            super("Sun-shroom",25,6,status);
         }
 
         @Override
@@ -26,6 +33,7 @@ public class Mushroom extends Plant{
                 System.out.println(name + " is asleep and cannot produce sun");
                 return 0;
             }
+            System.out.println(name + " produced 15 suns");
             return 15;
         }
     }
@@ -49,7 +57,7 @@ public class Mushroom extends Plant{
             return 2;
         }
     }
-    public static class DoomShroom extends Mushroom implements Attacker,InstantAttacker{
+    public static class DoomShroom extends Mushroom implements Attacker,InstantKiller{
         public DoomShroom(boolean status){
             super("Doom-shroom",125,INFINITY,status);
         }

@@ -1,5 +1,5 @@
 package PVZ_Codechum_version.plant_interfaces;
 
-public interface InstantAttacker {
+public interface InstantKiller {
     int killType();
 }

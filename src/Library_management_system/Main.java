@@ -61,7 +61,15 @@ public class Main {
                     sort_choice = sc.next().charAt(0);
                     cebu_provincial_library.chooseSort(sort_choice);
                     break;
-                case 'u':
+                case 'Y':
+                    sc.nextLine();
+                    System.out.print("Enter year to sort: ");
+                    year = sc.nextInt();
+                    cebu_provincial_library.sortYearWeird(year);
+                    break;
+                case 'h':
+                    sc.nextLine();
+                    
                     break;
 
             }

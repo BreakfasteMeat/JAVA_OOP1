@@ -12,6 +12,19 @@ public abstract class Plant implements Comparable<Plant>{
         this.hit_points = hit_points;
         this.sun_cost = sun_cost;
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public int getHit_points(){
+        return hit_points;
+    }
+
+    public int getSun_cost(){
+        return sun_cost;
+    }
+
     void die(){
         int hp = 0;
         System.out.println(this.name + " dies");
@@ -51,6 +64,7 @@ public abstract class Plant implements Comparable<Plant>{
 
         @Override
         public int produce_sun(){
+            System.out.println(name + " produces 50 sun");
             return 50;
         }
 
@@ -77,7 +91,7 @@ public abstract class Plant implements Comparable<Plant>{
         }
     }
 
-    public static class Squash extends Plant implements Attacker, InstantAttacker{
+    public static class Squash extends Plant implements Attacker, InstantKiller{
         public Squash() {
             super("Squash",50,INFINITY);
         }
@@ -91,7 +105,7 @@ public abstract class Plant implements Comparable<Plant>{
 
         @Override
         public int rangeType() {
-            return 3;
+            return 2;
         }
         @Override
         public int killType(){
@@ -104,13 +118,15 @@ public abstract class Plant implements Comparable<Plant>{
         }
     }
 
-    public static class Jalapeno extends Plant implements Attacker, InstantAttacker{
+    public static class Jalapeno extends Plant implements Attacker, InstantKiller{
         public Jalapeno(){
             super("Jalapeno",125,INFINITY);
         }
 
         @Override
         public int attack() {
+            System.out.println(name + " attacks");
+            die();
             return 5;
         }
 
@@ -127,7 +143,6 @@ public abstract class Plant implements Comparable<Plant>{
         @Override
         void die(){
             this.hit_points = 0;
-            die();
             System.out.println(name + " dies while exploding");
         }
     }
@@ -167,9 +182,49 @@ public abstract class Plant implements Comparable<Plant>{
             super("Coffee Bean",75, INFINITY);
         }
     }
-    public static class Wallnut extends Plant{
+    public static class Wallnut extends Plant implements Waller{
         public Wallnut(){
             super("Wallnut",50,20);
+        }
+
+        @Override
+        public int wallType(){
+            return 1;
+        }
+    }
+    public static class Tallnut extends Plant implements Waller{
+        public Tallnut(){
+            super("Tallnut",125,40);
+        }
+        @Override
+        public int wallType(){
+            return 2;
+        }
+    }
+    public static class Pumpkin extends Plant implements  Waller{
+        Plant enclosed_plant;
+
+
+
+        public Pumpkin(Plant p){
+            super("Pumpkin",125,20);
+            this.enclosed_plant = p;
+        }
+
+        public String getEnclosed_plant_name(){
+            if(enclosed_plant == null) return "nothing";
+            return "a " + enclosed_plant.getName();
+        }
+
+        @Override
+        public int wallType(){
+            return 3;
+        }
+
+        @Override
+        public String toString(){
+            if(enclosed_plant == null) return name + " not enclosing any plant " + " (" + hit_points + ")  - cost: " + sun_cost;
+            return name + " enclosing a "+ enclosed_plant.getName() +" (" + hit_points + ")  - cost: " + sun_cost;
         }
     }
 
