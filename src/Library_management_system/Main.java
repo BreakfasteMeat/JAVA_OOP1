@@ -69,7 +69,7 @@ public class Main {
                     break;
                 case 'h':
                     sc.nextLine();
-                    
+                    cebu_provincial_library.sortByEBook();
                     break;
 
             }

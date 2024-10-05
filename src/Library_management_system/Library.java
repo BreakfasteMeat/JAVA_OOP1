@@ -83,5 +83,9 @@ public class Library {
         BookCompareWithYear BY = new BookCompareWithYear(year);
         bookList.sort(BY);
     }
+    public void sortByEBook(){
+        BookCompareByEBook BY = new BookCompareByEBook();
+        bookList.sort(BY);
+    }
 
 }
