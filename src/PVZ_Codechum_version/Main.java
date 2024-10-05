@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        List<Plant> plants = new ArrayList<Plant>();
+        List<Plant> plants = new ArrayList<>();
         boolean plantSuccessfullyAdded = false;
         String op;
         Scanner sc = new Scanner(System.in);
@@ -236,10 +236,10 @@ public class Main {
                     Collections.sort(plants);
                     break;
                 case "Sort by Hit Points":
-                    plants.sort(compareHP);
+                    plants.sort(compareHP.reversed());
                     break;
                 case "Sort by Sun Cost":
-                    plants.sort(compareSun);
+                    plants.sort(compareSun.reversed());
                     break;
                 case "Sort by given Hit Points":
                     System.out.print("Enter Hit Points to sort: ");
