@@ -130,9 +130,12 @@ public class Main {
                         }
                     }
                     break;
-
-
-
+                case "Cabbage-pult":
+                    System.out.println("Added Cabbage-pult");
+                    plants.add(new Plant.CabbagePult());
+                case "Kernel-pult":
+                    System.out.println("Added Kernel-pult");
+                    plants.add(new Plant.KernelPult());
                 case "DONE":
                     break;
 
@@ -196,6 +199,8 @@ public class Main {
                                 case 4:
                                     System.out.println(p.getName() + " attacks freely");
                                     break;
+                                case 5:
+                                    System.out.println(p.getName() + " lobs a projectile");
                             }
                         }
                     }

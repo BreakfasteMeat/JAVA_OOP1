@@ -6,8 +6,6 @@ import PVZ_Codechum_version.plant_interfaces.*;
 public class Mushroom extends Plant{
     boolean status;
 
-
-
     public Mushroom(String name, int sun_cost, int hit_points, boolean status) {
         super(name, sun_cost, hit_points);
         this.status = status;
@@ -77,6 +75,45 @@ public class Mushroom extends Plant{
         @Override
         public int killType(){
             return 1;
+        }
+    }
+    public static class FumeShroom extends Mushroom implements Attacker, Upgradeable{
+        public FumeShroom(boolean status){ super("Fume-shroom",75,6,status);}
+
+        @Override
+        public Plant upgrade(){
+            return new Mushroom.GloomShroom(this.status);
+        }
+
+        @Override
+        public int rangeType(){
+            return 1;
+        }
+
+        @Override
+        public int attack(){
+            return 1;
+        }
+    }
+
+    public static class GloomShroom extends Mushroom implements Attacker, PlantUpgrade{
+        public GloomShroom(boolean status){
+            super("Gloom-shroom",75,6,status);
+        }
+
+        @Override
+        public int concurrent_sun(){
+            return 25;
+        }
+
+        @Override
+        public int rangeType(){
+            return 3;
+        }
+
+        @Override
+        public int attack(){
+            return 4;
         }
     }
 }

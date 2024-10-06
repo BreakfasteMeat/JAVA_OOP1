@@ -204,8 +204,6 @@ public abstract class Plant implements Comparable<Plant>{
     public static class Pumpkin extends Plant implements  Waller{
         Plant enclosed_plant;
 
-
-
         public Pumpkin(Plant p){
             super("Pumpkin",125,20);
             this.enclosed_plant = p;
@@ -225,6 +223,40 @@ public abstract class Plant implements Comparable<Plant>{
         public String toString(){
             if(enclosed_plant == null) return name + " not enclosing any plant " + " (" + hit_points + ")  - cost: " + sun_cost;
             return name + " enclosing a "+ enclosed_plant.getName() +" (" + hit_points + ")  - cost: " + sun_cost;
+        }
+    }
+    public static class CabbagePult extends Plant implements Attacker{
+        public CabbagePult(){
+            super("Cabbage-pult",100,6);
+        }
+
+        @Override
+        public int attack(){
+            System.out.println(name + " attacks");
+            return 2;
+        }
+
+        @Override
+        public int rangeType(){
+            return 5;
+        }
+
+    }
+    public static class KernelPult extends Plant implements Attacker{
+        public KernelPult(){
+            super("Kernel-pult",100,6);
+        }
+
+        @Override
+        public int attack(){
+            System.out.println(name + " attacks");
+            return 2;
+        }
+
+        @Override
+        public int rangeType(){
+
+            return 5;
         }
     }
 
