@@ -12,7 +12,7 @@ public class Main{
 		String username = "";
 		String choice;
 		do{
-			System.out.print("Add Player: ");
+			System.out.print("Add Class: ");
 			choice = sc.nextLine();
 			if(!choice.equals("DONE")){
 				System.out.print("Enter username: ");
@@ -99,6 +99,7 @@ public class Main{
 					System.out.println(ctr + " DPS Players deal " + do_ctr + " damage to the boss");
 					do_ctr = 0;
 					ctr = 0;
+					iterator = squad.iterator();
 					while (iterator.hasNext()) {
 						Player p = iterator.next();
 						do_ctr += p.damage();
