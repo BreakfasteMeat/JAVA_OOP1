@@ -7,7 +7,7 @@ public class ValidateInteger{
 		this.input = input;
 	}
 
-	void validate() throws OddNumberException{
+	void validate(){
 		if(input % 2 == 1){
 			throw new OddNumberException();
 		} else {
