@@ -1,5 +1,7 @@
 package Library_management_system;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -71,6 +73,11 @@ public class Main {
                     sc.nextLine();
                     cebu_provincial_library.sortByEBook();
                     break;
+                case 'x':
+                    break;
+
+                default:
+                    System.out.println(op + " is not an option.. For now");
 
             }
         }while(op != 'x');
